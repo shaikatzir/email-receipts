@@ -9,13 +9,13 @@ import oauth2.clients.smtp as smtplib
 #user_token = 
 #user_pwd = 
 
-def getInbox(app_token, app_pwd,user_mail,user_token,user_pwd,connType = "IMAP",retries=5, delay=3):
+def getInbox(user_mail,user_token,user_pwd,connType = "IMAP",retries=5, delay=3):
    while True:
         try:
         
           # Set up your Consumer and Token as per usual. Just like any other
           # three-legged OAuth request.
-          consumer = oauth.Consumer(app_token,app_pwd)
+          consumer = oauth.Consumer('anonymous', 'anonymous')
           token = oauth.Token(user_token, user_pwd)
 
           # Setup the URL according to Google's XOAUTH implementation. Be sure

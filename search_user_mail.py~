@@ -40,15 +40,12 @@ print   queryBrands
 def fetch_mail():
     
     if len(sys.argv) > 1 :
-       app_token = sys.argv[1]
-       app_pwd = sys.argv[2]
-       user_mail = sys.argv[3]
-       user_token = sys.argv[4]
-       user_pwd = sys.argv[5]
-       
+       user_mail = sys.argv[1]
+       user_token = sys.argv[2]
+       user_pwd = sys.argv[3]
        
     # connecting to the user gmail imap server
-    m= connect_mail.getInbox(app_token, app_pwd, user_mail,user_token,user_pwd)
+    m= connect_mail.getInbox(user_mail,user_token,user_pwd)
     
     conn = imaplib.IMAP4_SSL(imap_host)#('imap.gmail.com', port = 993)
     conn.login(username, password)
