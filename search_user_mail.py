@@ -8,11 +8,28 @@ from io import StringIO
 import email, mimetypes
 from email.utils import parseaddr
 
-from lxml import etree, html
+
 import connect_mail
 
-username = "donde.test@gmail.com"
-password = "dondetest123"
+
+
+sys.path.append('/org/home/ec2-user/keys')
+
+try : 
+    
+    import mail_keys as pwd_file
+    username = pwd_file.username;
+    password = pwd_file.password;
+except:
+    print "can't get mail keys."
+    assert()
+    
+try :
+    app_token = pwd_file.app_token
+    app_pwd = pwd_file.app_pwd
+except:
+    app_token = 'anonymous'
+    app_pwd = 'anonymous'
 
 imap_host =  'imap.googlemail.com'
 to_addr = "donde.test@gmail.com"
@@ -40,11 +57,9 @@ print   queryBrands
 def fetch_mail():
     
     if len(sys.argv) > 1 :
-       app_token = sys.argv[1]
-       app_pwd = sys.argv[2]
-       user_mail = sys.argv[3]
-       user_token = sys.argv[4]
-       user_pwd = sys.argv[5]
+       user_mail = sys.argv[1]
+       user_token = sys.argv[2]
+       user_pwd = sys.argv[3]
        
        
     # connecting to the user gmail imap server
